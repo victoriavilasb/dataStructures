@@ -22,6 +22,7 @@ class LinkedList
         int get_length();
         void add_list(int value);
         void print_list(LinkedList &list);
+        void remove_element(int value);
 };
 
 LinkedList::LinkedList() 
@@ -57,6 +58,45 @@ LinkedList::add_list(int value)
     }
 }
 
+void
+LinkedList::remove_element(int value)
+{
+    Node * temp = head;
+    Node * clean;
+    if(head == NULL)
+    {
+        printf("List already empty!\n");
+    }
+    else
+    {
+        if(head->value == value)
+        {
+            head = temp -> next;
+            delete temp;
+        }
+        else 
+        {
+            while(temp->next != NULL)
+            {
+                if(temp->next->next == NULL && temp->next->value == value)
+                {
+                    clean = temp->next;
+                    temp->next = NULL;
+                    delete clean;
+                } 
+                else if(temp->next->value == value)
+                {
+                    clean = temp->next;
+                    temp->next = temp->next->next;
+                    delete clean;
+                    break;
+                }
+                temp = temp->next;
+            }
+        }
+    }
+}
+
 void 
 LinkedList::print_list(LinkedList &list)
 {
@@ -71,7 +111,7 @@ LinkedList::print_list(LinkedList &list)
     }
     else
     {
-        cout << "Lista está vazia!" << endl;
+        cout << "List is empty!" << endl;
     }
     
 }

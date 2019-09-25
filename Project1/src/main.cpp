@@ -19,8 +19,12 @@ int main() {
         if(option == 'i')
         {
             list->add_list(value);
-            addToList(value, list);
             list->print_list(*list);
+        }
+        else if(option == 'r')
+        {
+            list->remove_element(value);
+            printf("\n");
         }
         else
         {
@@ -30,11 +34,6 @@ int main() {
 
     cout << list->get_length() << endl;
     return 0;
-}
-
-void
-addToList(int value, LinkedList * list)
-{
 }
 
 int

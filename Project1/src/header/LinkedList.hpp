@@ -11,28 +11,25 @@ using namespace std;
 
 class LinkedList 
 {
-    Node * head;
     Node * last;
     Node * newValue;
 
-
     public: 
+        Node * head;
         LinkedList();
-        void add_list(int value);
+        void push(int value);
         void print_list(LinkedList &list);
         void remove_by_value(int value);
-        int first_out();
 };
 
 LinkedList::LinkedList() 
 {
     head = NULL;
     Node * last;
-
 }
 
 void
-LinkedList::add_list(int value) 
+LinkedList::push(int value) 
 {
     newValue = new Node;
     newValue -> value = value;
@@ -57,7 +54,7 @@ LinkedList::remove_by_value(int value)
     Node * clean;
     if(head == NULL)
     {
-        printf("List already empty!\n");
+        printf("Already empty!\n");
     }
     else
     {
@@ -89,25 +86,6 @@ LinkedList::remove_by_value(int value)
     }
 }
 
-int 
-LinkedList::first_out()
-{
-    Node * temp = head;
-    int out;
-    if(head == NULL)
-    {
-        printf("List already empty!\n");
-        return 0;
-    }
-    else
-    {
-        head = temp->next;
-        out = temp->value;
-        delete temp;
-        return out;
-    }  
-}
-
 void 
 LinkedList::print_list(LinkedList &list)
 {
@@ -122,7 +100,8 @@ LinkedList::print_list(LinkedList &list)
     }
     else
     {
-        cout << "List is empty!" << endl;
+        cout << "Empty!" << endl;
     }
     
 }
+

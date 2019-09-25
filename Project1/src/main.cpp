@@ -1,5 +1,5 @@
 #include <iostream>
-#include "./header/LinkedList.hpp"
+#include "./header/Queue.hpp"
 
 using namespace std;
 
@@ -11,6 +11,7 @@ printNumberOfFlask(int value, LinkedList * list);
 
 int main() {
     LinkedList * list = new LinkedList();
+    Queue * queue = new Queue();
     int value;
     char option;
     while (true)
@@ -18,26 +19,17 @@ int main() {
         cin >> value >> option;
         if(option == 'i')
         {
-            list->add_list(value);
-            list->print_list(*list);
+            queue->push(value);
+            queue->print_list(*queue);
         }
         else if(option == 'r')
         {
-            list->remove_element(value);
+            queue->first_out();
             printf("\n");
-        }
-        else
-        {
-            cout << printNumberOfFlask(value, list) << endl;
+            queue->print_list(*queue);
+            
         }
     }
 
-    cout << list->get_length() << endl;
-    return 0;
-}
-
-int
-printNumberOfFlask(int value, LinkedList * list)
-{
     return 0;
 }

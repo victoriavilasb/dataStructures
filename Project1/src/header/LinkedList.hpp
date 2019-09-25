@@ -19,10 +19,10 @@ class LinkedList
 
     public: 
         LinkedList();
-        int get_length();
         void add_list(int value);
         void print_list(LinkedList &list);
-        void remove_element(int value);
+        void remove_by_value(int value);
+        int first_out();
 };
 
 LinkedList::LinkedList() 
@@ -31,12 +31,6 @@ LinkedList::LinkedList()
     length = 0;
     Node * last;
 
-}
-
-int 
-LinkedList::get_length() 
-{
-    return length;
 }
 
 void
@@ -59,7 +53,7 @@ LinkedList::add_list(int value)
 }
 
 void
-LinkedList::remove_element(int value)
+LinkedList::remove_by_value(int value)
 {
     Node * temp = head;
     Node * clean;
@@ -97,6 +91,25 @@ LinkedList::remove_element(int value)
     }
 }
 
+int 
+LinkedList::first_out()
+{
+    Node * temp = head;
+    int out;
+    if(head == NULL)
+    {
+        printf("List already empty!\n");
+        return 0;
+    }
+    else
+    {
+        head = temp->next;
+        out = temp->value;
+        delete temp;
+        return out;
+    }  
+}
+
 void 
 LinkedList::print_list(LinkedList &list)
 {
@@ -115,11 +128,3 @@ LinkedList::print_list(LinkedList &list)
     }
     
 }
-
-
-
-// LinkedList::Add(int data) {
-//     Node * node = new Node();
-//     node -> value = data
-//     node -> next = 
-// }

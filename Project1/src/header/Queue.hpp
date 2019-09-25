@@ -7,14 +7,8 @@ using namespace std;
 class Queue : public LinkedList
 {
     public:
-        Queue();
         int first_out();
 };
-
-Queue::Queue()
-{
-    LinkedList();
-}
 
 int 
 Queue::first_out()

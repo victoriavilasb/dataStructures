@@ -12,7 +12,6 @@ using namespace std;
 class LinkedList 
 {
     Node * head;
-    int length;
     Node * last;
     Node * newValue;
 
@@ -28,7 +27,6 @@ class LinkedList
 LinkedList::LinkedList() 
 {
     head = NULL;
-    length = 0;
     Node * last;
 
 }

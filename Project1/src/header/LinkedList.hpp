@@ -64,36 +64,29 @@ LinkedList::remove_by_value(int value)
 {
     Node * temp = head;
     Node * clean;
-    if(head == NULL)
+    if(head->value == value)
     {
-        printf("Already empty!\n");
+        head = temp -> next;
+        delete temp;
     }
-    else
+    else 
     {
-        if(head->value == value)
+        while(temp->next != NULL)
         {
-            head = temp -> next;
-            delete temp;
-        }
-        else 
-        {
-            while(temp->next != NULL)
+            if(temp->next->next == NULL && temp->next->value == value)
             {
-                if(temp->next->next == NULL && temp->next->value == value)
-                {
-                    clean = temp->next;
-                    temp->next = NULL;
-                    delete clean;
-                } 
-                else if(temp->next->value == value)
-                {
-                    clean = temp->next;
-                    temp->next = temp->next->next;
-                    delete clean;
-                    break;
-                }
-                temp = temp->next;
+                clean = temp->next;
+                temp->next = NULL;
+                delete clean;
+            } 
+            else if(temp->next->value == value)
+            {
+                clean = temp->next;
+                temp->next = temp->next->next;
+                delete clean;
+                break;
             }
+            temp = temp->next;
         }
     }
 }
@@ -109,6 +102,7 @@ LinkedList::print()
             cout << temp->value << " ";
             temp = temp->next;
         };
+        cout << endl;
     }
     else
     {

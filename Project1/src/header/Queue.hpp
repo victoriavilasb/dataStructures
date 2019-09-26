@@ -17,7 +17,6 @@ Queue::first_out()
     int out;
     if(head == NULL)
     {
-        printf("Already empty!\n");
         return 0;
     }
     else

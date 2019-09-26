@@ -18,7 +18,6 @@ int main() {
         if(option == 'i')
         {
             list->push(value);
-            list->print();
         }
         else if(option == 'r')
         {
@@ -27,7 +26,7 @@ int main() {
         }
         else if(option == 'p')
         {
-            printf("%i\n", calculatesFlasks(value, list));
+            cout << calculatesFlasks(value, list) << endl;
         }
     }
 
@@ -37,50 +36,49 @@ int main() {
 int 
 calculatesFlasks(int value, LinkedList * list)
 {
-    Queue * log_queue = new Queue();
-    int sum, sub, times;
+    Queue * log_queue_value = new Queue();
+    Queue * log_queue_times = new Queue();
+    int sum, sub, op_value, op_times;
     Node * it = list->head;
-    int op_value = 0;
-    
-    times = 1;
     while(it)
     {
         sum = it->value;
         if(sum == value)
         {
-            return times;
+            return 1;
         }
         else
         {
-            log_queue->push(sum);
+            log_queue_value->push(sum);
+            log_queue_times->push(1);
             it = it->next;
         }
-
     }
     
-    do 
+    do
     {
-        it = list -> head;
-        op_value = log_queue->first_out();
-
-        times+=1;
+        it = list->head;
+        op_value = log_queue_value->first_out();
+        op_times = log_queue_times->first_out();
         while(it) 
         {
             sum = op_value + it->value;
             sub = op_value - it->value;
             if(sum == value || sub == value)
             {
-                return times;
+                return op_times+1;
             }
-            else
+            else if(sub>0)
             {
-                log_queue->push(sum);
-                log_queue->push(sub);
+                log_queue_value->push(sub);
+                log_queue_times->push(op_times+1);
             }
-            it = it -> next;
+            log_queue_value->push(sum);
+            log_queue_times->push(op_times+1);
+            it = it->next;
         }
     } 
-    while(log_queue);
+    while(log_queue_value);
 
     return 0;
 }

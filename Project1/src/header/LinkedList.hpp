@@ -86,7 +86,10 @@ LinkedList::remove_by_value(int value)
                 delete clean;
                 break;
             }
-            temp = temp->next;
+            else 
+            {
+                temp = temp->next;
+            }
         }
     }
 }

@@ -22,7 +22,6 @@ int main() {
         else if(option == 'r')
         {
             list->remove_by_value(value);
-            list->print();
         }
         else if(option == 'p')
         {
@@ -55,7 +54,7 @@ calculatesFlasks(int value, LinkedList * list)
         }
     }
     
-    do
+    while(log_queue_value)
     {
         it = list->head;
         op_value = log_queue_value->first_out();
@@ -78,7 +77,6 @@ calculatesFlasks(int value, LinkedList * list)
             it = it->next;
         }
     } 
-    while(log_queue_value);
 
     return 0;
 }

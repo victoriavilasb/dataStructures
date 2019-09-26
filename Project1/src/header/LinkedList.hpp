@@ -18,14 +18,26 @@ class LinkedList
         Node * head;
         LinkedList();
         void push(int value);
-        void print_list(LinkedList &list);
+        void print();
         void remove_by_value(int value);
+        ~LinkedList();
 };
 
 LinkedList::LinkedList() 
 {
     head = NULL;
     Node * last;
+}
+
+LinkedList::~LinkedList()
+{
+    Node * temp = head;
+    while (head)
+    {
+        temp = head;
+        head = head->next;
+        delete temp;
+    };
 }
 
 void
@@ -87,7 +99,7 @@ LinkedList::remove_by_value(int value)
 }
 
 void 
-LinkedList::print_list(LinkedList &list)
+LinkedList::print()
 {
     Node * temp = head;
     if (head != NULL)

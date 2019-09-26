@@ -1,6 +1,6 @@
 PP = g++
-main: main.cpp
+tp1: main.cpp header/LinkedList.hpp header/Queue.hpp
 	echo "Compilando ..."
-	${PP} -o main main.cpp
+	${PP} -o tp1 main.cpp
 clean:
-	rm -rf *o main
+	rm -rf *o tp1

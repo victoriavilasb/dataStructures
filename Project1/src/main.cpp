@@ -31,10 +31,13 @@ int main() {
 int 
 calculatesFlasks(int value, LinkedList * list)
 {
+    // defines a queue for the proporse of store all operations with flasks
     Queue * log_queue_value = new Queue();
+    // defines a queue for the proporse of store how many flasks were used in the operations
     Queue * log_queue_times = new Queue();
     int sum, sub, op_value, op_times;
     Node * it = list->head;
+
     while(it)
     {
         sum = it->value;

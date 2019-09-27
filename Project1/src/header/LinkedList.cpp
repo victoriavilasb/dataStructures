@@ -43,10 +43,10 @@ LinkedList::remove_by_value(int value)
 {
     Node * temp = head;
     Node * clean;
+
     if(head->value == value)
     {
         head = temp -> next;
-        last = head;
         delete temp;
     }
     else 

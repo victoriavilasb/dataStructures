@@ -3,9 +3,6 @@
 
 using namespace std;
 
-void
-addToList(int value, LinkedList * list);
-
 int
 calculatesFlasks(int value, LinkedList * list);
 
@@ -28,7 +25,6 @@ int main() {
             cout << calculatesFlasks(value, list) << endl;
         }
     }
-
     return 0;
 }
 
@@ -44,14 +40,16 @@ calculatesFlasks(int value, LinkedList * list)
         sum = it->value;
         if(sum == value)
         {
+            delete log_queue_times;
+            delete log_queue_value;
             return 1;
         }
         else
         {
             log_queue_value->push(sum);
             log_queue_times->push(1);
-            it = it->next;
         }
+        it = it->next;
     }
     
     while(log_queue_value)
@@ -65,6 +63,8 @@ calculatesFlasks(int value, LinkedList * list)
             sub = op_value - it->value;
             if(sum == value || sub == value)
             {
+                delete log_queue_times;
+                delete log_queue_value;
                 return op_times+1;
             }
             else if(sub>0)

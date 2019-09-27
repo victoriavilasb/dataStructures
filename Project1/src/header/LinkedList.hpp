@@ -67,6 +67,7 @@ LinkedList::remove_by_value(int value)
     if(head->value == value)
     {
         head = temp -> next;
+        last = head;
         delete temp;
     }
     else 
@@ -76,20 +77,20 @@ LinkedList::remove_by_value(int value)
             if(temp->next->next == NULL && temp->next->value == value)
             {
                 clean = temp->next;
+                last = temp;
                 temp->next = NULL;
                 delete clean;
+                return;
             } 
             else if(temp->next->value == value)
             {
                 clean = temp->next;
+                last = temp;
                 temp->next = temp->next->next;
                 delete clean;
-                break;
+                return;
             }
-            else 
-            {
-                temp = temp->next;
-            }
+            temp = temp->next;
         }
     }
 }

@@ -25,7 +25,7 @@ Tree::insert_in_order(int value)
         Node * temp = root;
         while(temp)
         {
-            if(value < temp->value)
+            if(value <= temp->value)
             {
                 if(temp->child_left == NULL) 
                 {
@@ -39,7 +39,7 @@ Tree::insert_in_order(int value)
                     temp = temp->child_left;
                 }
             } 
-            else if(value > temp->value)
+            else if(value >= temp->value)
             {
                 if(temp->child_right == NULL) 
                 {

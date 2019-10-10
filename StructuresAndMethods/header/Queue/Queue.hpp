@@ -1,4 +1,4 @@
-#include "./LinkedList/LinkedList.hpp"
+#include "../LinkedList/LinkedList.hpp"
 class Queue : public LinkedList
 {
     public:

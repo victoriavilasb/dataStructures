@@ -1,12 +1,12 @@
 #include <iostream>
-#include "./Node.hpp"
+#include "./NodeTree.hpp"
 
 class Tree {
-    Node * newChild;
+    NodeTree * newChild;
     public: 
-        Node * root;
+        NodeTree * root;
         Tree();
         ~Tree();
-        void print_tree();
+        void print_recursive_pre_order(NodeTree * temp);
         void insert_in_order(int value);
 };

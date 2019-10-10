@@ -1,5 +1,4 @@
 #include <iostream>
-#include "header/LinkedList/LinkedList.hpp"
 #include "header/Queue/Queue.hpp"
 #include "header/Tree/Tree.hpp"
 
@@ -18,7 +17,7 @@ int main() {
         } 
         else if (option == 'p')
         {
-            tree->print_tree();
+            tree->print_recursive_pre_order(tree->root);
         }
     }
     return 0;

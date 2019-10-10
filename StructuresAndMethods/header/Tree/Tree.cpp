@@ -11,8 +11,7 @@ Tree::Tree()
 void
 Tree::insert_in_order(int value)
 {
-    newChild = new Node;
-    Node * clean;
+    newChild = new NodeTree;
     newChild->value = value;
     newChild->child_left = NULL;
     newChild->child_right = NULL;
@@ -22,7 +21,7 @@ Tree::insert_in_order(int value)
     }
     else
     {
-        Node * temp = root;
+        NodeTree * temp = root;
         while(temp)
         {
             if(value <= temp->value)
@@ -30,8 +29,6 @@ Tree::insert_in_order(int value)
                 if(temp->child_left == NULL) 
                 {
                     temp->child_left = newChild;
-                    clean = temp;
-                    delete clean;
                     break;
                 }
                 else 
@@ -44,8 +41,6 @@ Tree::insert_in_order(int value)
                 if(temp->child_right == NULL) 
                 {
                     temp->child_right = newChild;
-                    clean = temp;
-                    delete clean;
                     break;
                 }
                 else 
@@ -61,22 +56,22 @@ Tree::insert_in_order(int value)
     
 }
 
+/* 
+    lista o nó raiz, seguido de suas subárvores 
+    (da esquerda para a direita), 
+    cada uma em pré-ordem.
+*/
 void
-Tree::print_tree()
+Tree::print_recursive_pre_order(NodeTree * temp)
 {
-    Node * temp = root;
-    while(temp)
+    if (temp == NULL) 
     {
-        cout << temp->value << endl;
-        if(temp->child_left != NULL) 
-        {
-            temp = temp->child_left;
-        }
-        else
-        {
-            break;
-        }
-        
+        return;
     }
-    
+    else 
+    {
+        cout << temp->value << " ";
+        print_recursive_pre_order(temp->child_left);
+        print_recursive_pre_order(temp->child_right);
+    }  
 }

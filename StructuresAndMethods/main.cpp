@@ -1,23 +1,24 @@
 #include <iostream>
-#include "header/Queue/Queue.hpp"
 #include "header/Tree/Tree.hpp"
+#include "header/Stack/Stack.hpp"
 
 using namespace std;
 
 int main() {
     int value;
     Tree * tree = new Tree;
+    Stack * stack = new Stack;
     char option;
     while(cin >> option)
     {
         if (option == 'i')
         {
             cin >> value;
-            tree->insert_in_order(value);
+            stack->push(value);
         } 
         else if (option == 'p')
         {
-            tree->print_recursive_pre_order(tree->root);
+            stack->print();
         }
     }
     return 0;

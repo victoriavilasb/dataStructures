@@ -11,3 +11,9 @@ get_max(int to_sort[], int length)
     }
     return max;
 }
+
+int
+merge(int to_sort[], int left, int middle, int right)
+{
+    //
+}

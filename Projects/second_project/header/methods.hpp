@@ -34,9 +34,15 @@ counting_sort(int to_sort[], int length)
 }
 
 int * 
-merge_sort()
+merge_sort(int to_sort[], int left, int right)
 {
-
+    if(left < right)
+    {
+        int middle = (left+(right-left))/2;
+        merge_sort(to_sort, left, middle);
+        merge_sort(to_sort, middle+1, right);
+        merge(to_sort, left, middle, right);
+    }
 }
 
 

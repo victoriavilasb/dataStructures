@@ -1,19 +1,5 @@
 #include <iostream>
-
-
-int 
-get_max(int to_sort[], int length)
-{
-    int max = to_sort[0]; 
-    for (int i = 1; i < length; i++)
-    {
-        if (max < to_sort[i]) 
-        {
-            max = to_sort[i];
-        }
-    }
-    return max;
-}
+#include "helpers.hpp"
 
 int *
 counting_sort(int to_sort[], int length)

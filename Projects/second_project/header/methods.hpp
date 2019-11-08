@@ -1,4 +1,5 @@
 #include <iostream>
+#include "./Appointment.hpp"
 #include "helpers.hpp"
 
 int *
@@ -33,14 +34,16 @@ counting_sort(int to_sort[], int length)
     return sorted;
 }
 
-int * 
-merge_sort(int to_sort[], int left, int right)
+
+void 
+merge_sort(Appointment * to_sort[], int left, int right)
 {
+    int middle;
     if(left < right)
     {
-        int middle = (left+(right-left))/2;
+        middle = (left + right) / 2;
         merge_sort(to_sort, left, middle);
-        merge_sort(to_sort, middle+1, right);
+        merge_sort(to_sort, middle + 1, right);
         merge(to_sort, left, middle, right);
     }
 }

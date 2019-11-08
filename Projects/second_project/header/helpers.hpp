@@ -12,52 +12,20 @@ get_max(int to_sort[], int length)
     return max;
 }
 
-void
-merge(Appointment * to_sort[], int left, int middle, int right)
+void months_counter(Appointment * calendar[], int total_time, int planet_amount)
 {
-    int i, j, k;
-    int length_left = middle - left + 1, length_right = right - middle;
-    Appointment * LEFT[length_left], * RIGHT[length_right];
-
-    for(i = 0; i < length_left; i++)
+    int months_count = 1, sum = 0;
+    for(int i = 0; i < planet_amount; i++)
     {
-        LEFT[i] = to_sort[left + i];
-    }
-    for(j = 0; j < length_right; j++)
-    {
-        RIGHT[j] = to_sort[middle + 1 + j];
-    }
-
-    i = 0;
-    j = 0;
-    k = left;
-
-    while (i < length_left && j < length_right)
-    {
-        if (LEFT[i]->duration <= RIGHT[j]->duration)
+        calendar[i]->month = months_count;
+        if (sum < total_time)
         {
-            to_sort[k] = LEFT[i];
-            i++;
+            sum += calendar[i]->duration;
         }
         else
         {
-            to_sort[k] = RIGHT[j];
-            j++;
+            sum = 0;
+            months_count++;
         }
-        k++;
     }
-
-    while (i < length_left)
-    {
-        to_sort[k] = LEFT[i];
-        i++;
-        k++;
-    }
-
-    while (j < length_right)
-    {
-        to_sort[k] = RIGHT[j];
-        j++;
-        k++;
-    }   
 }

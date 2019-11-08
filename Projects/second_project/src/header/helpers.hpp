@@ -1,12 +1,12 @@
 int 
-get_max(int to_sort[], int length)
+get_max(Appointment * to_sort[], int length)
 {
-    int max = to_sort[0]; 
+    int max = to_sort[0]->duration; 
     for (int i = 1; i < length; i++)
     {
-        if (max < to_sort[i]) 
+        if (max < to_sort[i]->duration) 
         {
-            max = to_sort[i];
+            max = to_sort[i]->duration;
         }
     }
     return max;

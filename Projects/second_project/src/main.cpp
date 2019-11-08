@@ -4,7 +4,7 @@
 int 
 main() 
 {
-    int total_time, planet_amount, planet_char, minutes, months_count, sum, i, j;
+    int total_time, planet_amount, planet_char, minutes, months_count, sum, i, j, max_number;
 
     std::cin >> total_time >> planet_amount >> planet_char;
 
@@ -23,6 +23,9 @@ main()
 
     // fill calendar object with visit months
     months_counter(calendar, total_time, planet_amount);
+
+    // order by planet names
+    max_number = get_max(calendar, planet_amount);
 
     for(i = 0; i < planet_amount; i++) 
     {

@@ -4,12 +4,13 @@
 int 
 main() 
 {
-    int total_time, planet_amount, planet_char, minutes, months_count, sum, i, j, max_number;
+    int total_time, planet_amount, planet_char, minutes, i;
 
     std::cin >> total_time >> planet_amount >> planet_char;
 
     char planet_name[planet_char];
     Appointment * calendar[planet_amount];
+    Appointment * ordered_calendar[planet_amount];
 
     // fill calendar with durations and planets
     for(i = 0; i < planet_amount; i++) 
@@ -24,8 +25,15 @@ main()
     // fill calendar object with visit months
     months_counter(calendar, total_time, planet_amount);
 
-    // order by planet names
-    max_number = get_max(calendar, planet_amount);
+    // get last month
+    int last_month = calendar[planet_amount-1]->month;
+    for(int month = 1; month <= last_month; month++)
+    {
+        for(int column = planet_char; column > 0; column--)
+        {
+            radix_sort(calendar, ordered_calendar, month, column-1, planet_amount, planet_char);
+        }
+    }
 
     for(i = 0; i < planet_amount; i++) 
     {

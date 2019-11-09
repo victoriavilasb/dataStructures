@@ -1,18 +1,31 @@
 int 
-get_max(Appointment * to_sort[], int length)
+get_max(Appointment * to_sort[], int month, int column, int planet_amount)
 {
-    int max = to_sort[0]->duration; 
-    for (int i = 1; i < length; i++)
+    int it = 0;
+    int max = to_sort[it]->planet_name[column];
+    int curr_month = 1;
+    while(curr_month <= month && it < planet_amount)
     {
-        if (max < to_sort[i]->duration) 
+        curr_month = to_sort[it]->month;
+        if (curr_month < month)
         {
-            max = to_sort[i]->duration;
+            it++;
+            max = to_sort[it]->planet_name[column];
+        } 
+        else
+        {
+            if (max < to_sort[it]->planet_name[column])
+            {
+                max = to_sort[it]->planet_name[column];
+            }
+            it++;
         }
     }
     return max;
 }
 
-void months_counter(Appointment * calendar[], int total_time, int planet_amount)
+void 
+months_counter(Appointment * calendar[], int total_time, int planet_amount)
 {
     int months_count = 1, sum = 0;
     for(int i = 0; i < planet_amount; i++)
@@ -28,4 +41,9 @@ void months_counter(Appointment * calendar[], int total_time, int planet_amount)
             months_count++;
         }
     }
+}
+
+void 
+months_counter(Appointment * calendar[], int total_time, int planet_amount)
+{
 }

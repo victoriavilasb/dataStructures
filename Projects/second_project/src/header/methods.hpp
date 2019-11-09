@@ -3,10 +3,9 @@
 #include "helpers.hpp"
 
 void
-counting_sort(Appointment * to_sort[], int length)
+counting_sort(Appointment * to_sort[], Appointment * sorted[], int month, int column, int planet_amount, int max)
 {
-    int max_number = get_max(to_sort, length);
-    int temp[max_number+1], i;
+    int temp[max+1], i;
     int control_variable = 0;
     int * sorted = new int[length];
 
@@ -97,8 +96,10 @@ merge_sort(Appointment * to_sort[], int left, int right)
 }
 
 void
-radix_sort(Appointment * to_sort[], int max_number)
+radix_sort(Appointment * to_sort[], Appointment * sorted[], int month, int column, int planet_amount, int planet_char)
 {
+    int max = get_max(to_sort, month, column, planet_amount); 
+    counting_sort(to_sort, sorted, month, column, planet_amount, max); 
 }
 
 

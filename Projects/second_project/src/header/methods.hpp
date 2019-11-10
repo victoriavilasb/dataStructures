@@ -2,52 +2,47 @@
 #include "./Appointment.hpp"
 #include "helpers.hpp"
 
+using namespace std;
+
 void
-counting_sort(Appointment * to_sort[], Appointment * sorted[], int month, int column, int max, int cont_first, int cont_last)
+counting_sort(Appointment * to_sort[], int month, int column, int max, int cont_first, int cont_last)
 {
-    // int i, j, count;
-    // int converted;
-    // int size = cont_last - cont_first + 1;
-    // Appointment * objs[max+1][size];
+    int i, j, count;
+    int converted;
+    int size = cont_last - cont_first + 1;
+    Appointment * objs[max+1][size];
 
-    // for (i = 0; i < max+1; i++)
-    // {
-    //     for (j = 0; j < size; j++)
-    //     {
-    //         objs[i][j] = new Appointment();
-    //     }
-    // }
+    for (i = 0; i < max+1; i++)
+    {
+        for (j = 0; j < size; j++)
+        {
+            objs[i][j] = new Appointment();
+        }
+    }
 
+    for (i = cont_first; i <= cont_last; i++)
+    {
+        j = 0;
+        converted = to_sort[i]->planet_name[column];
+        while (objs[converted][j]->month)
+        {
+            j++;
+        }
+        objs[converted][j] = to_sort[i];     
+    }
 
+    count = 0;
+    for (i = 0; i < max+1; i++)
+    {
+        j = 0;
 
-    // for (i = cont_first; i <= cont_last; i++)
-    // {
-    //     j = 0;
-    //     converted = to_sort[i]->planet_name[column];
-    //     //std::cout << i << " " << to_sort[i]->planet_name << std::endl;
-    //     while (objs[converted][j]->month)
-    //     {
-    //         j++;
-    //     }
-    //     objs[converted][j] = to_sort[i];     
-
-    // }
-
-
-    // count = 0;
-    // for (i = 0; i < max+1; i++)
-    // {
-    //     j = 0;
-
-    //     while(objs[i][j]->month) 
-    //     {
-    //         to_sort[cont_first + count] = objs[i][j];
-    //         j++;
-    //         count++;
-    //     }      
-    // }
-    // std::cout << "teste"<< std::endl;
-
+        while(objs[i][j]->month) 
+        {
+            to_sort[cont_first + count] = objs[i][j];
+            j++;
+            count++;
+        }      
+    }
 }
 
 void
@@ -114,15 +109,13 @@ merge_sort(Appointment * to_sort[], int left, int right)
 }
 
 void
-radix_sort(Appointment * to_sort[], Appointment * sorted[], int month, int column, int planet_amount, int planet_char)
+radix_sort(Appointment * to_sort[], int month, int column, int planet_amount, int planet_char)
 {
     int cont_first, cont_last;
     int max = get_max(to_sort, month, column, planet_amount, cont_first, cont_last);
-    //get_interval(to_sort, month, planet_amount, cont_first, cont_last);
-    std::cout << "cont first: " << cont_first << ", cont last: " << cont_last << std::endl;
+    cout <<cont_last<< endl;
 
-    counting_sort(to_sort, sorted, month, column, max, cont_first, cont_last); 
-
+    counting_sort(to_sort, month, column, max, cont_first, cont_last); 
 }
 
 

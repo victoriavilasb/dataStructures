@@ -10,7 +10,6 @@ main()
 
     char planet_name[planet_char];
     Appointment * calendar[planet_amount];
-    Appointment * ordered_calendar[planet_amount];
 
     for(i = 0; i < planet_amount; i++) 
     {
@@ -21,6 +20,7 @@ main()
     merge_sort(calendar, 0, planet_amount-1);
 
     months_counter(calendar, total_time, planet_amount);
+
     for(i = 0; i < planet_amount; i++) 
     {
         std::cout << calendar[i]->month << " " << calendar[i]->planet_name << std::endl;
@@ -31,17 +31,19 @@ main()
     {
         for(int column = planet_char-1; column >= 0; column--)
         {
-            radix_sort(calendar, ordered_calendar, month, column, planet_amount, planet_char);
+            radix_sort(calendar,  month, column, planet_amount, planet_char);
         }
     }
 
-
+    for(i = 0; i < planet_amount; i++) 
+    {
+        std::cout << calendar[i]->month << " " << calendar[i]->planet_name << std::endl;
+    }
 
     for(i = 0; i < planet_amount; i++) 
     {
-        std::cout << calendar[i]->month << " " << calendar[i]->duration << " " << calendar[i]->planet_name << std::endl;
+        delete calendar[i];
     }
-    std::cout << std::endl;
 
     return 0;
 

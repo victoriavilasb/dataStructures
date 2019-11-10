@@ -15,6 +15,7 @@ get_max(Appointment * to_sort[], int month, int column, int planet_amount, int &
         } 
         else
         {
+            
             if (max < to_sort[it]->planet_name[column])
             {
                 max = to_sort[it]->planet_name[column];
@@ -22,27 +23,14 @@ get_max(Appointment * to_sort[], int month, int column, int planet_amount, int &
             cont_last = it;
             it++;
         }
-        
         curr_month = to_sort[it]->month;
     }
-}
-
-void get_interval(Appointment * to_sort[], int month, int planet_amount, int &cont_first, int &cont_last)
-{
-    int it = 0;
-    int curr_month = to_sort[it]->month;
-    if (curr_month == month)
+    if (month == curr_month)
     {
-        cont_first = it;
-        while(curr_month == month)
-        {
-            cont_last = to_sort[it]->month;
-            std::cout << curr_month << " " << month << std::endl;
-            it++;
-        }
+        cont_last = it;
     }
+    return max;
 }
-
 
 void 
 months_counter(Appointment * calendar[], int total_time, int planet_amount)
@@ -67,8 +55,7 @@ months_counter(Appointment * calendar[], int total_time, int planet_amount)
             months_count++;
             calendar[i]->month = months_count;
         }
-
-        
+    
     }
 }
 

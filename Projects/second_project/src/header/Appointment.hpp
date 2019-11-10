@@ -5,6 +5,7 @@ class Appointment {
         std::string planet_name;
         int duration;
         int month;
+        Appointment();
         Appointment(char[], int, int); 
         ~Appointment() {};
 };
@@ -15,5 +16,10 @@ Appointment::Appointment(char a[], int b, int length)
     month = 0;
     planet_name = a;
     duration = b;
+}
+
+Appointment::Appointment()
+{
+    month = 0;
 }
 
